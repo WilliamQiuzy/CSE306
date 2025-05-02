@@ -7,5 +7,5 @@ How to run the code:
 2. g++ main.cpp -o renderer -std=c++17 -O3 -fopenmp -lm
 3. ./renderer
 
-[Report](report.pdf) <br>
-[Result](image.png)
+[Report](./CG-main/report.pdf) <br>
+[Result](./CG-main/image.png)
