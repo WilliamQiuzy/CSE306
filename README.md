@@ -18,3 +18,5 @@ How to run the code
 3. make run (run the project)
 4. make video (create video with generated images)
 5. make clean (when you finish running)
+
+[Video](./Project2-main/fluid_simulation.mp4)
