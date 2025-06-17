@@ -4,7 +4,7 @@ Computer graphics project repository
 
 # Project 1
 How to run the code:
-1. cd to main
+1. cd to CG-main
 2. g++ main.cpp -o renderer -std=c++17 -O3 -fopenmp -lm
 3. ./renderer
 
