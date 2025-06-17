@@ -14,9 +14,6 @@ lbfgsfloatval_t OptimalTransport::evaluate(const lbfgsfloatval_t* x, lbfgsfloatv
    
 
     for(int i = 0; i < n; i++) {
-        // if (powerDiagram.voronoi[i].computeArea() != 0) {
-        //     std::cout << powerDiagram.voronoi[i].computeArea()<< "\n";
-        // }
         double carea = powerDiagram.voronoi[i].computeArea();
         g[i] = carea - weights_[i];
 
@@ -24,9 +21,6 @@ lbfgsfloatval_t OptimalTransport::evaluate(const lbfgsfloatval_t* x, lbfgsfloatv
         fx += weights_[i] * x[i];
         fx -= x[i] * carea;
     }
-    // for (int i = 0; i < n; i++) {
-    //     std::cout << "Weight " << i << " = " << x[i] << "\n";
-    // }
     return -fx;
 }
 
@@ -35,10 +29,6 @@ int OptimalTransport::progressCallback(void* instance, const lbfgsfloatval_t* x,
 }
 
 int OptimalTransport::progress(const lbfgsfloatval_t* x, const lbfgsfloatval_t* g, lbfgsfloatval_t fx, lbfgsfloatval_t xnorm, lbfgsfloatval_t gnorm, lbfgsfloatval_t step, int n, int k, int ls) {
-    // std::cout << "Iteration " << k << ":\n";
-    // std::cout << "fx = " << fx << "\n";
-    // std::cout << "xnorm = " << xnorm << "\n";
-    // std::cout << "gnorm = " << gnorm << "\n";
     return 0;
 }
 
@@ -55,10 +45,6 @@ void OptimalTransport::compute() {
     std::cout << "L-BFGS optimization terminated with status code " << ret << "\n";
     std::cout << "fx = " << fx << "\n";
     std::vector<double> weights(x, x + n);
-    // for (int i = 0; i < n; i++) {
-    //     std::cout << "Weight " << i << " = " << x[i] << "\n";
-    // }
-    // std::cout << "Weights: " << weights[100] << "\n";
     PowerDiagram powerDiagram(points_, weights);
     powerDiagram.compute();
     solution_ = powerDiagram;
@@ -145,7 +131,6 @@ int OptimalTransport::compute_fluid() {
         lbfgs_parameter_init(&param);
         param.linesearch = LBFGS_LINESEARCH_BACKTRACKING_ARMIJO;
         param.max_iterations = 10000;
-        // param.linesearch = LBFGS_LINESEARCH_BACKTRACKING;
 
         int n = points_.size() + 1;
         int ret = lbfgs(n, x, &fx, optimizeFluidCallback, progressCallback, this, &param);
@@ -155,19 +140,9 @@ int OptimalTransport::compute_fluid() {
         PowerDiagram powerDiagram(points_, weights);
         powerDiagram.compute_fluid();
         solution_ = powerDiagram;
-        // std::vector<Vector> points = powerDiagram.points;
-        // std::cout << "point1 " << points[1][0] << " " << points[1][1] <<" " <<points[1][2] << "\n";
 
         lbfgs_free(x);
-        // if (ret == 0) {
-        //     break;
-        // }
-        
-        // trial++;
-        // if (trial >5) {
-        //     break;
-        // }
-    // }
+    
     return ret ;
 
 }
