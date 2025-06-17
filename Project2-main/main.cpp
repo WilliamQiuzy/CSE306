@@ -8,13 +8,9 @@
 #include <chrono>
 #include <memory>
 #include <unistd.h>
-
-// #include "Voronoi.h"
-// #include "OptimalTransport.h"
+#include "Voronoi.h"
+#include "OptimalTransport.h"
 #include "Fluid.h"
-
-
-
 
 int main() {
     Fluid fluid(50);
