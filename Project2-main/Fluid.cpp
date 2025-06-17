@@ -53,8 +53,6 @@ void Fluid::compute() {
             velocities_[i] = velocities_[i] +  timeStep * totalForce / mass;
             particles_[i] = particles_[i] +  timeStep * velocities_[i];
 
-            // std::cout << "particle: " << i << " " << particles_[i][0] << " " << particles_[i][1] << std::endl;
-
             if (particles_[i][0] < 0) {
                 particles_[i][0] = -particles_[i][0];
                 velocities_[i][0] = 0;
