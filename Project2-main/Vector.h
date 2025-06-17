@@ -1,5 +1,3 @@
-// Vector.h
-
 #include <vector>
 #include <iostream>
 #include <random>
@@ -7,14 +5,8 @@
 #include <memory>
 #include <unistd.h>
 
-
-
 #ifndef VECTOR_H
 #define VECTOR_H
-
-
-
-
 
 static std::default_random_engine engine(44);
 static std::uniform_real_distribution<double> uniform_gen(0, 1);
@@ -43,7 +35,6 @@ public:
     double data[3];
 };
 
-// Operator declarations
 Vector operator+(const Vector& a, const Vector& b);
 Vector operator-(const Vector& a, const Vector& b);
 Vector operator*(double scalar, const Vector& a);
