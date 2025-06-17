@@ -1,6 +1,5 @@
 #include "SaveSVG.h"
 
-
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
  
@@ -23,9 +22,6 @@ void save_svg(const std::vector<Polygon> &polygons, std::string filename, std::s
     fclose(f);
 }
 
-// Adds one frame of an animated svg file. frameid is the frame number (between 0 and nbframes-1).
-// polygons is a list of polygons, describing the current frame.
-// The polygon vertices are supposed to be in the range [0..1], and a canvas of size 1000x1000 is created
 void save_svg_animated(const std::vector<Polygon> &polygons, std::string filename, int frameid, int nbframes) {
     FILE* f;
     if (frameid == 0) {
@@ -70,9 +66,6 @@ void save_svg_animated(const std::vector<Polygon> &polygons, std::string filenam
     }
     fclose(f);
 }
-
-
-
 
 void save_frame(const std::vector<Polygon> &cells, std::string filename, int frameid) {
     int W = 1000, H = 1000;
@@ -125,7 +118,6 @@ void save_frame(const std::vector<Polygon> &cells, std::string filename, int fra
                     mindistEdge = std::min(mindistEdge, distEdge);
                 }
                 if (isInside) {
-                    // if (i < 100) {   // the N first particles may represent fluid, displayed in blue
                     {
                      image[((H - y - 1)*W + x) * 3] = 0;
                      image[((H - y - 1)*W + x) * 3 + 1] = 0;
